@@ -7,7 +7,11 @@ LinkedIn: https://www.linkedin.com/in/yeongjun-im-764256196/
 # API Overview
 
 1. 5 Domain models are implemented. (Student, Lesson, Enrolment, AttendanceSheet, Attendance)
-2.
+2. Search, Orderby and Pagination query.
+3. Student CRUD.
+4. Lesson CRUD.
+5. AttendanceSheet CRUD.
+6. Attendance CRUD.
 
 ### Framework and Libraries
 
@@ -24,15 +28,7 @@ LinkedIn: https://www.linkedin.com/in/yeongjun-im-764256196/
 
 ### Endpoints
 
-Examples: link to postman
-Domain: http://localhost:5000/
-
-###### Retrieve students
-
-[GET] ~/api/students/
-Query params:  
-Pagination: [CurrentPage, PageSize]  
-Filtering:
+Postman API document: https://documenter.getpostman.com/view/9426565/SzS2xo8Z?version=latest
 
 ###### Retrieve Enrolments
 
