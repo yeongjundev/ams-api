@@ -1,0 +1,12 @@
+# Directories
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vscode
+.vs
+
+.DS_Store
+
+# Production appsettings
+appsettings.json
