@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.AppDbContext;
@@ -64,6 +65,25 @@ namespace DataAccess.Repositories
                     return source.Where(lesson => EF.Functions.Like(lesson.Title, search));
             }
             return source;
+        }
+
+        public ValueTask<PagedResult<Lesson>> RetrieveEnrolledLessons(
+            Guid studentId,
+            SearchingOption searchingOption,
+            OrderingOption orderingOption,
+            PaginationOption paginationOption
+        )
+        {
+            var enrolments = _context.Set<Enrolment>().AsQueryable();
+
+            var enrolledLessons = enrolments
+                .Include(enrolment => enrolment.Lesson)
+                .Where(enrolment => enrolment.StudentId == studentId)
+                .Select(enrolment => enrolment.Lesson);
+
+            enrolledLessons = Searching(enrolledLessons, searchingOption);
+            enrolledLessons = Ordering(enrolledLessons, orderingOption);
+            return Pagination(enrolledLessons, paginationOption);
         }
     }
 }

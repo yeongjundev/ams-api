@@ -133,5 +133,30 @@ namespace API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
+        [HttpGet("{studentId}/enrolments/lessons/")]
+        public async Task<IActionResult> GetEnrolledLessons(
+            [FromRoute] Guid studentId,
+            [FromQuery] SearchingOption searchingOption,
+            [FromQuery] OrderingOption orderingOption,
+            [FromQuery] PaginationOption paginationOption
+        )
+        {
+            try
+            {
+                var enrolledLessons = _uow.LessonRepository.RetrieveEnrolledLessons(
+                    studentId,
+                    searchingOption,
+                    orderingOption,
+                    paginationOption
+                );
+                return Ok(_mapper.Map<PagedResultDTO<Lesson>>(await enrolledLessons));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Error in action `GetEnrolledLessons()`. {e.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
     }
 }

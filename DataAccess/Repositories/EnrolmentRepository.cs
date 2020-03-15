@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.AppDbContext;
@@ -30,17 +31,7 @@ namespace DataAccess.Repositories
         //     }
         // }
 
-        // public ValueTask<PagedResult<Lesson>> RetrieveLessons(
-        //     SearchingOption searchingOption,
-        //     OrderingOption orderingOption,
-        //     PaginationOption paginationOption
-        // )
-        // {
-        //     var lessons = RetrieveAll();
-        //     lessons = Searching(lessons, searchingOption);
-        //     lessons = Ordering(lessons, orderingOption);
-        //     return Pagination(lessons, paginationOption);
-        // }
+
 
         // public override IQueryable<Lesson> Searching(
         //     IQueryable<Lesson> source,
