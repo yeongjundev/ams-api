@@ -4,6 +4,18 @@ Author: Yeongjun Im
 Email: yeongjundev@gmail.com  
 LinkedIn: https://www.linkedin.com/in/yeongjun-im-764256196/
 
+### How to Run API
+
+This applciation is built with .Net Core 3.1.  
+(.Net SDK and Runtime are required to compile and run).
+
+1. Download or clone git repository from https://github.com/yeongjundev/ams-api
+2. At ./API directory type command
+
+```
+dotnet run
+```
+
 # API Overview
 
 1. 5 Domain models are implemented. (Student, Lesson, Enrolment, AttendanceSheet, Attendance)
