@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.AppDbContext;
@@ -38,24 +37,47 @@ namespace DataAccess.Repositories
         }
 
         public ValueTask<PagedResult<Student>> RetrieveStudents(
+            SearchingOption searchingOption,
             OrderingOption orderingOption,
             PaginationOption paginationOption
         )
         {
             var students = RetrieveAll();
-
-            // searching
-
-            // ordering
+            students = Searching(students, searchingOption);
             students = Ordering(students, orderingOption);
-
-            // Pagination
             return Pagination(students, paginationOption);
         }
 
-        public override IQueryable<Student> Searching()
+        public override IQueryable<Student> Searching(
+            IQueryable<Student> source,
+            SearchingOption searchingOption
+        )
         {
-            throw new System.NotImplementedException();
+            if (searchingOption == null)
+            {
+                searchingOption = new SearchingOption();
+            }
+
+            if (searchingOption.SearchOn == null || searchingOption.Search == null)
+            {
+                return source;
+            }
+
+            var search = $"%{searchingOption.Search.ToLower()}%";
+            switch (searchingOption.SearchOn.ToString())
+            {
+                case "firstname":
+                    return source.Where(student => EF.Functions.Like(student.Firstname, search));
+                case "middlename":
+                    return source.Where(student => EF.Functions.Like(student.Middlename, search));
+                case "lastname":
+                    return source.Where(student => EF.Functions.Like(student.Lastname, search));
+                case "email":
+                    return source.Where(student => EF.Functions.Like(student.Email, search));
+                case "phone":
+                    return source.Where(student => EF.Functions.Like(student.Phone, search));
+            }
+            return source.Where(student => false);
         }
     }
 }

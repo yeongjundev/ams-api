@@ -7,6 +7,7 @@ namespace DataAccess.Repositories
     public interface IStudentRepository : IRepositoryBase<Student>
     {
         ValueTask<PagedResult<Student>> RetrieveStudents(
+            SearchingOption searchingOption,
             OrderingOption orderingOption,
             PaginationOption paginationOption
         );

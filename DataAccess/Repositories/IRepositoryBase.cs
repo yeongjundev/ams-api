@@ -20,7 +20,7 @@ namespace DataAccess.Repositories
 
         ValueTask<T> RetrieveById(params object[] ids);
 
-        IQueryable<T> Searching();
+        IQueryable<T> Searching(IQueryable<T> source, SearchingOption searchingOption);
 
         void Update(T entity);
     }

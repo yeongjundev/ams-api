@@ -68,7 +68,7 @@ namespace DataAccess.Repositories
             return _context.Set<T>().FindAsync(ids);
         }
 
-        public abstract IQueryable<T> Searching();
+        public abstract IQueryable<T> Searching(IQueryable<T> source, SearchingOption searchingOption);
 
         public void Update(T entity)
         {

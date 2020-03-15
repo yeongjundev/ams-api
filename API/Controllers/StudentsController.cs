@@ -68,6 +68,7 @@ namespace API.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetStudents(
+            [FromQuery] SearchingOption searchingOption,
             [FromQuery] OrderingOption orderingOption,
             [FromQuery] PaginationOption paginationOption
         )
@@ -75,6 +76,7 @@ namespace API.Controllers
             try
             {
                 var students = _uow.StudentRepository.RetrieveStudents(
+                    searchingOption,
                     orderingOption,
                     paginationOption
                 );
