@@ -22,6 +22,8 @@ namespace Core.AutoMapper
                     dest => dest.Id,
                     opt => opt.MapFrom(src => Guid.NewGuid())
                 );
+            CreateMap<PutStudentDTO, Student>();
+
             CreateMap(typeof(PagedResult<>), typeof(PagedResultDTO<>));
         }
     }

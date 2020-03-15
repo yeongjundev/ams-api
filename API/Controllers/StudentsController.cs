@@ -37,7 +37,7 @@ namespace API.Controllers
                 var newStudent = _mapper.Map<Student>(body);
                 _uow.StudentRepository.Create(newStudent);
 
-                _uow.Complete(true);
+                _uow.Complete(false);
                 return CreatedAtRoute("GetStudent", new { id = newStudent.Id }, _mapper.Map<StudentDTO>(newStudent));
             }
             catch (Exception e)
@@ -85,6 +85,51 @@ namespace API.Controllers
             catch (Exception e)
             {
                 _logger.LogError($"Error in action `GetStudents()`. {e.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpPut("{studentId}")]
+        public async Task<IActionResult> PutStudent([FromRoute] Guid studentId, [FromBody] PutStudentDTO body)
+        {
+            try
+            {
+                var student = await _uow.StudentRepository.RetrieveById(studentId);
+                if (student == null)
+                {
+                    return NotFound();
+                }
+                student = _mapper.Map(body, student);
+                _uow.StudentRepository.Update(student);
+
+                _uow.Complete(true);
+                return Ok(_mapper.Map<StudentDTO>(student));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Error in action `PutStudent()`. {e.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpDelete("{studentId}")]
+        public async Task<IActionResult> DeleteStudent([FromRoute] Guid studentId)
+        {
+            try
+            {
+                var student = await _uow.StudentRepository.RetrieveById(studentId);
+                if (student == null)
+                {
+                    return NotFound();
+                }
+                _uow.StudentRepository.Delete(student);
+
+                _uow.Complete(false);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Error in action `DeleteStudent()`. {e.Message}");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
