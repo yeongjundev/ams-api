@@ -1,4 +1,5 @@
 using System.Text;
+using Core.AppDbContext;
 using DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -23,7 +24,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             // EntityFrameworkCore DbContext
-            services.ConfigureDbContext("InMemoryDevelopmentDB");
+            services.ConfigureInMemoryDbContext<AppDbContext>("InMemoryDB");
 
             services.AddControllers();
         }

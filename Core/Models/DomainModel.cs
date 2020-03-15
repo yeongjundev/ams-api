@@ -1,7 +1,6 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace DataAccess.Models
+namespace Core.Models
 {
     public class DomainModel : IDomainModel
     {

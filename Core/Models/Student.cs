@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataAccess.Models
+namespace Core.Models
 {
     public class Student : DomainModel
     {

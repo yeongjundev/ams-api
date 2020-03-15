@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataAccess.Models
+namespace Core.Models
 {
     public class Enrolment : DomainModel
     {

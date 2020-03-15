@@ -1,6 +1,6 @@
 using System;
 
-namespace DataAccess.Models
+namespace Core.Models
 {
     public interface IDomainModel
     {

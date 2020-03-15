@@ -1,13 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DataAccess
+namespace Core.AppDbContext
 {
     public static class ConfigureDbContextExtensions
     {
-        public static void ConfigureDbContext(this IServiceCollection services, string databaseName)
+        public static void ConfigureInMemoryDbContext<T>(
+            this IServiceCollection services,
+            string databaseName
+        ) where T : DbContext
         {
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddDbContext<T>(options =>
                 options.UseInMemoryDatabase(databaseName: databaseName),
                 contextLifetime: ServiceLifetime.Scoped,
                 optionsLifetime: ServiceLifetime.Scoped
