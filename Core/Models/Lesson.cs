@@ -15,7 +15,9 @@ namespace Core.Models
         [StringLength(300)]
         public string Description { get; set; }
 
-        public List<Enrolment> Enrolments { get; set; }
+        internal List<Enrolment> Enrolments { get; set; }
+
+        internal List<AttendanceSheet> AttendanceSheets { get; set; }
 
         public Lesson() : base() { }
     }

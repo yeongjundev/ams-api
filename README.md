@@ -16,6 +16,7 @@ LinkedIn: https://www.linkedin.com/in/yeongjun-im-764256196/
 
 1. .Net Core 3.1
 2. EntityFramework
+3. AutoMapper
 
 ### Architect Diagram
 

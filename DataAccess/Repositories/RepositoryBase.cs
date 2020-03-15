@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.AppDbContext;
@@ -22,9 +23,19 @@ namespace DataAccess.Repositories
             _context.Set<T>().Add(entity);
         }
 
+        public void CreateRange(List<T> entities)
+        {
+            _context.Set<T>().AddRange(entities);
+        }
+
         public void Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
+        }
+
+        public void DeleteRange(List<T> entities)
+        {
+            _context.Set<T>().RemoveRange(entities);
         }
 
         // public abstract IQueryable<T> Ordering(IQueryable<T> source, OrderingOption orderingOption);
@@ -58,12 +69,12 @@ namespace DataAccess.Repositories
             );
         }
 
-        public IQueryable<T> RetrieveAll()
+        public virtual IQueryable<T> RetrieveAll()
         {
             return _context.Set<T>().AsQueryable();
         }
 
-        public ValueTask<T> RetrieveById(params object[] ids)
+        public virtual ValueTask<T> RetrieveById(params object[] ids)
         {
             return _context.Set<T>().FindAsync(ids);
         }

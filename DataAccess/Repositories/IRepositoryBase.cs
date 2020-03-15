@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Helpers;
@@ -10,17 +11,17 @@ namespace DataAccess.Repositories
     {
         void Create(T entity);
 
+        void CreateRange(List<T> entities);
+
         void Delete(T entity);
 
-        // IQueryable<T> Ordering(IQueryable<T> source, OrderingOption orderingOption);
+        void DeleteRange(List<T> entities);
 
         ValueTask<PagedResult<T>> Pagination(IQueryable<T> source, PaginationOption paginationOption);
 
         IQueryable<T> RetrieveAll();
 
         ValueTask<T> RetrieveById(params object[] ids);
-
-        // IQueryable<T> Searching(IQueryable<T> source, SearchingOption searchingOption);
 
         void Update(T entity);
     }

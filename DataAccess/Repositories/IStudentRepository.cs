@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.Helpers;
 using Core.Models;
@@ -19,5 +20,7 @@ namespace DataAccess.Repositories
             OrderingOption orderingOption,
             PaginationOption paginationOption
         );
+
+        ValueTask<List<Student>> RetrieveEnrolledStudents(Guid lessonId);
     }
 }

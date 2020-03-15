@@ -50,6 +50,34 @@ namespace DataAccess.UnitOfWork
             }
         }
 
+        private IAttendanceSheetRepository _attendanceSheetRepository;
+
+        public IAttendanceSheetRepository AttendanceSheetRepository
+        {
+            get
+            {
+                if (_attendanceSheetRepository == null)
+                {
+                    _attendanceSheetRepository = new AttendanceSheetRepository(_context);
+                }
+                return _attendanceSheetRepository;
+            }
+        }
+
+        private IAttendanceRepository _attendanceRepository;
+
+        public IAttendanceRepository AttendanceRepository
+        {
+            get
+            {
+                if (_attendanceRepository == null)
+                {
+                    _attendanceRepository = new AttendanceRepository(_context);
+                }
+                return _attendanceRepository;
+            }
+        }
+
         public UnitOfWork(AppDbContext context)
         {
             _context = context;

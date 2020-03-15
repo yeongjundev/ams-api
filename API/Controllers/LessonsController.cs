@@ -80,7 +80,7 @@ namespace API.Controllers
                     orderingOption,
                     paginationOption
                 );
-                return Ok(_mapper.Map<PagedResultDTO<Lesson>>(await lessons));
+                return Ok(_mapper.Map<PagedLessonDTO>(await lessons));
             }
             catch (Exception e)
             {
@@ -150,7 +150,7 @@ namespace API.Controllers
                     orderingOption,
                     paginationOption
                 );
-                return Ok(_mapper.Map<PagedResultDTO<Student>>(await enrolledStudents));
+                return Ok(_mapper.Map<PagedStudentDTO>(await enrolledStudents));
             }
             catch (Exception e)
             {

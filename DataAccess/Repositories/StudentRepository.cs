@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.AppDbContext;
@@ -98,6 +99,19 @@ namespace DataAccess.Repositories
             enrolledStudents = Searching(enrolledStudents, searchingOption);
             enrolledStudents = Ordering(enrolledStudents, orderingOption);
             return Pagination(enrolledStudents, paginationOption);
+        }
+
+        public ValueTask<List<Student>> RetrieveEnrolledStudents(Guid lessonId)
+        {
+            var enrolments = _context.Set<Enrolment>().AsQueryable();
+
+            return new ValueTask<List<Student>>(
+                enrolments
+                    .Include(enrolment => enrolment.Student)
+                    .Where(enrolment => enrolment.LessonId == lessonId)
+                    .Select(enrolment => enrolment.Student)
+                    .ToListAsync()
+            );
         }
     }
 }

@@ -3,7 +3,7 @@ using Core.Models;
 
 namespace Core.DTOs.Serializers
 {
-    public class PagedResultDTO<T> where T : class, IDomainModel
+    public class PagedStudentDTO
     {
         public int PageSize { get; set; }
 
@@ -13,6 +13,6 @@ namespace Core.DTOs.Serializers
 
         public int TotalCount { get; set; }
 
-        public List<T> Result { get; set; }
+        public List<StudentDTO> Result { get; set; }
     }
 }

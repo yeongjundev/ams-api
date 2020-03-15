@@ -10,6 +10,10 @@ namespace DataAccess.UnitOfWork
 
         IEnrolmentRepository EnrolmentRepository { get; }
 
+        IAttendanceSheetRepository AttendanceSheetRepository { get; }
+
+        public IAttendanceRepository AttendanceRepository { get; }
+
         int Complete(bool ignoreResult);
     }
 }
