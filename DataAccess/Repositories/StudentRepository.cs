@@ -77,7 +77,7 @@ namespace DataAccess.Repositories
                 case "phone":
                     return source.Where(student => EF.Functions.Like(student.Phone, search));
             }
-            return source.Where(student => false);
+            return source;
         }
     }
 }

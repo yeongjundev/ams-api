@@ -24,6 +24,13 @@ namespace Core.AutoMapper
                 );
             CreateMap<PutStudentDTO, Student>();
 
+            CreateMap<PostLessonDTO, Lesson>()
+                .ForMember(
+                    dest => dest.Id,
+                    opt => opt.MapFrom(src => Guid.NewGuid())
+                );
+            CreateMap<PutLessonDTO, Lesson>();
+
             CreateMap(typeof(PagedResult<>), typeof(PagedResultDTO<>));
         }
     }

@@ -6,6 +6,8 @@ namespace DataAccess.UnitOfWork
     {
         IStudentRepository StudentRepository { get; }
 
+        ILessonRepository LessonRepository { get; }
+
         int Complete(bool ignoreResult);
     }
 }

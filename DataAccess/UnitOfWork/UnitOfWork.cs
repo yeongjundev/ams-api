@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Core.AppDbContext;
 using DataAccess.Repositories;
 
@@ -20,6 +19,20 @@ namespace DataAccess.UnitOfWork
                     _studentRepository = new StudentRepository(_context);
                 }
                 return _studentRepository;
+            }
+        }
+
+        private ILessonRepository _lessonRepository;
+
+        public ILessonRepository LessonRepository
+        {
+            get
+            {
+                if (_lessonRepository == null)
+                {
+                    _lessonRepository = new LessonRepository(_context);
+                }
+                return _lessonRepository;
             }
         }
 
