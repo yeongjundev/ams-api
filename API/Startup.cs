@@ -1,6 +1,9 @@
 using System.Text;
+using AutoMapper;
 using Core.AppDbContext;
+using Core.AutoMapper;
 using DataAccess;
+using DataAccess.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +28,10 @@ namespace API
         {
             // EntityFrameworkCore DbContext
             services.ConfigureInMemoryDbContext<AppDbContext>("InMemoryDB");
+            // AutoMapper
+            services.AddAutoMapper(typeof(AutoMapperProfile));
+            // Services
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddControllers();
         }
@@ -46,8 +53,8 @@ namespace API
                         var error = context.Features.Get<IExceptionHandlerFeature>();
                         if (error != null)
                         {
-                            var ex = error.Error;
-                            await context.Response.WriteAsync("Error (to be replaced)", Encoding.UTF8);
+                            var e = error.Error;
+                            await context.Response.WriteAsync($"Error (to be replaced):\n{e.Message}", Encoding.UTF8);
                         }
                     });
                 });
