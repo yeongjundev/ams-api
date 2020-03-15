@@ -1,3 +1,4 @@
+using System;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,7 @@ namespace Core.AppDbContext
         {
             base.OnModelCreating(builder);
 
+            // Entity Relationship
             builder.Entity<Enrolment>()
                 .HasKey(enrolment => new { enrolment.StudentId, enrolment.LessonId });
             builder.Entity<Enrolment>()

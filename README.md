@@ -6,11 +6,8 @@ LinkedIn: https://www.linkedin.com/in/yeongjun-im-764256196/
 
 # API Overview
 
-1. API is not aming for public API.
-2. API mainly adopts RESTful convention.
-3. However, do not fully follow RESTful convention as it is private API.
-4. API does not support CORS.
-5. API does not support HTTPs request.
+1. 5 Domain models are implemented. (Student, Lesson, Enrolment, AttendanceSheet, Attendance)
+2.
 
 ### Framework and Libraries
 
@@ -18,7 +15,12 @@ LinkedIn: https://www.linkedin.com/in/yeongjun-im-764256196/
 2. EntityFramework
 3. AutoMapper
 
-### Architect Diagram
+### Application Structure
+
+1. Data Access Layer (DAL): UnitOfWork and repositories
+2. Core Layer: Entity models, Data Transfer Objects (DTO), Pagination, Sorting, Searching helpers
+3. Application Layer: Controllers
+4. Service Layer: AttendanceManager, InvoiceExcelBuilder (To be added)
 
 ### Endpoints
 
@@ -40,11 +42,17 @@ Query params:
 - Pagination: [CurrentPage, PageSize]
 - Filtering:
 
-# Database Schema
+<!-- # Database Schema
 
 # Technical Decisions
 
 1. The number of end-user is not many (the number of staff, maximum 10),
    Thus, multiple small size request is chosen rather than sole big size request.
 
-# Business Logical Decisions
+# Business Logical Decisions -->
+
+1. API is not aming for public API.
+2. API mainly adopts RESTful convention.
+3. API does not support CORS.
+4. API does not support HTTPs request.
+5. Currently no authorization added.
