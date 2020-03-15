@@ -36,6 +36,20 @@ namespace DataAccess.UnitOfWork
             }
         }
 
+        private IEnrolmentRepository _enrolmentRepository;
+
+        public IEnrolmentRepository EnrolmentRepository
+        {
+            get
+            {
+                if (_enrolmentRepository == null)
+                {
+                    _enrolmentRepository = new EnrolmentRepository(_context);
+                }
+                return _enrolmentRepository;
+            }
+        }
+
         public UnitOfWork(AppDbContext context)
         {
             _context = context;

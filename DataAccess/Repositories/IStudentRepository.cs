@@ -4,7 +4,7 @@ using Core.Models;
 
 namespace DataAccess.Repositories
 {
-    public interface IStudentRepository : IRepositoryBase<Student>
+    public interface IStudentRepository : IRepositoryBase<Student>, IOrderable<Student>, ISearchable<Student>
     {
         ValueTask<PagedResult<Student>> RetrieveStudents(
             SearchingOption searchingOption,

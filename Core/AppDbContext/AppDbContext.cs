@@ -18,7 +18,7 @@ namespace Core.AppDbContext
             base.OnModelCreating(builder);
 
             builder.Entity<Enrolment>()
-                .HasKey(enrolment => new { enrolment.LessonId, enrolment.StudentId });
+                .HasKey(enrolment => new { enrolment.StudentId, enrolment.LessonId });
             builder.Entity<Enrolment>()
                 .HasOne(enrolment => enrolment.Student)
                 .WithMany(student => student.Enrolments)

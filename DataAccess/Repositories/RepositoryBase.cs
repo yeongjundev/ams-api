@@ -27,7 +27,7 @@ namespace DataAccess.Repositories
             _context.Set<T>().Remove(entity);
         }
 
-        public abstract IQueryable<T> Ordering(IQueryable<T> source, OrderingOption orderingOption);
+        // public abstract IQueryable<T> Ordering(IQueryable<T> source, OrderingOption orderingOption);
 
         public async ValueTask<PagedResult<T>> Pagination(IQueryable<T> source, PaginationOption paginationOption = null)
         {
@@ -68,7 +68,7 @@ namespace DataAccess.Repositories
             return _context.Set<T>().FindAsync(ids);
         }
 
-        public abstract IQueryable<T> Searching(IQueryable<T> source, SearchingOption searchingOption);
+        // public abstract IQueryable<T> Searching(IQueryable<T> source, SearchingOption searchingOption);
 
         public void Update(T entity)
         {

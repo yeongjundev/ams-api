@@ -11,7 +11,7 @@ namespace DataAccess.Repositories
     {
         public StudentRepository(AppDbContext context) : base(context) { }
 
-        public override IQueryable<Student> Ordering(
+        public IQueryable<Student> Ordering(
             IQueryable<Student> source,
             OrderingOption orderingOption
         )
@@ -48,7 +48,7 @@ namespace DataAccess.Repositories
             return Pagination(students, paginationOption);
         }
 
-        public override IQueryable<Student> Searching(
+        public IQueryable<Student> Searching(
             IQueryable<Student> source,
             SearchingOption searchingOption
         )

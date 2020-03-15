@@ -12,7 +12,7 @@ namespace DataAccess.Repositories
 
         void Delete(T entity);
 
-        IQueryable<T> Ordering(IQueryable<T> source, OrderingOption orderingOption);
+        // IQueryable<T> Ordering(IQueryable<T> source, OrderingOption orderingOption);
 
         ValueTask<PagedResult<T>> Pagination(IQueryable<T> source, PaginationOption paginationOption);
 
@@ -20,7 +20,7 @@ namespace DataAccess.Repositories
 
         ValueTask<T> RetrieveById(params object[] ids);
 
-        IQueryable<T> Searching(IQueryable<T> source, SearchingOption searchingOption);
+        // IQueryable<T> Searching(IQueryable<T> source, SearchingOption searchingOption);
 
         void Update(T entity);
     }
